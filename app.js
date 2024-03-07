@@ -6,11 +6,15 @@ app.get("/", async (req, res) => {
 
   const timeStart = new Date().toLocaleString()
 
+  console.log(timeStart)
+
   await new Promise((resolve, reject) => {
-    setTimeout(() => resolve(), 60_000)
+    setTimeout(() => resolve(), getMinutes(10))
   })
 
   const timeEnd = new Date().toLocaleString()
+
+  console.log(timeEnd)
 
   res.json({
     status: 'completed',
@@ -18,6 +22,11 @@ app.get("/", async (req, res) => {
     timeEnd,
   })
 });
+
+
+function getMinutes (minutes) {
+  return 1_000 * 60 * minutes
+}
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
