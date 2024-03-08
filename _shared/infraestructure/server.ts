@@ -10,7 +10,7 @@ export function startServer () {
   
   app.use('/accounts-backup', accountsBackupRouter);
 
-  server.keepAliveTimeout = 1000 * 60 * 60 * 24
-  server.headersTimeout = 1000 * 60 * 60 * 24
+  // server.keepAliveTimeout = 1000 * 60 * 60 * 24
+  // server.headersTimeout = 1000 * 60 * 60 * 24
 }
 
