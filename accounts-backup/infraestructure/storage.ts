@@ -16,6 +16,8 @@ export class StorageController implements IStorageController {
       const path = `firestore-buckups-json/${accountId}/${dateId}.json`
       const file = this.bucket.file(path)
 
+      console.log(path)
+
       await file.save(JSON.stringify(JSONBackupData), {
         contentType: 'aplication/json',
         metadata: {
@@ -25,6 +27,8 @@ export class StorageController implements IStorageController {
           }
         }
       })
+
+      console.log('file created')
 
       const storageRef = await file.getSignedUrl({
         expires: Date.now() + (1000 * 60 * 60 * 24 * 30),

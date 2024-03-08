@@ -58,6 +58,9 @@ export class CreateAccountsBackup implements ICreateAccountsBackup {
     try {
 
       const JSONBackupData = await this.backupController.createAccountBackup(accountId)
+
+      console.log('JSONBackupData')
+
       const backupUrl = await this.storageController.saveJsonFile({
         accountId,
         JSONBackupData,
