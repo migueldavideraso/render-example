@@ -1,16 +1,16 @@
 import { TResult } from "../../_result/type"
-import { IAccount, IAccountBackupData, IBackupData, JSONBackupData } from "./models"
+import { IAccount, IAccountBackupData, IBackupData, ICollectionBackup } from "./models"
 
 
 
 
 export interface IBackupController {
-  createAccountBackup (accountId: string): Promise<JSONBackupData>
+  createAccountBackup (accountId: string): Promise<ICollectionBackup>
 }
 
 export interface IStorageController {
   saveJsonFile(args: {
-    JSONBackupData: JSONBackupData
+    CollectionBackup: ICollectionBackup
     dateId: string
     accountId: string
   }): Promise<string|null>

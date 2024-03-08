@@ -1,5 +1,5 @@
 import { DBError } from "../../_errors/main";
-import type { JSONBackupData } from "../domine/models";
+import type { ICollectionBackup } from "../domine/models";
 import type { IStorageController } from "../domine/services";
 import admin from 'firebase-admin'
 
@@ -8,17 +8,17 @@ export class StorageController implements IStorageController {
 
   private bucket = admin.storage().bucket()
 
-  async saveJsonFile(args: { JSONBackupData: JSONBackupData; dateId: string; accountId: string }) {
+  async saveJsonFile(args: { CollectionBackup: ICollectionBackup; dateId: string; accountId: string }) {
 
     try {
 
-      const { JSONBackupData, dateId, accountId } = args
+      const { CollectionBackup, dateId, accountId } = args
       const path = `firestore-buckups-json/${accountId}/${dateId}.json`
       const file = this.bucket.file(path)
 
       console.log(path)
 
-      await file.save(JSON.stringify(JSONBackupData), {
+      await file.save(JSON.stringify(CollectionBackup), {
         contentType: 'aplication/json',
         metadata: {
           customElements: {
