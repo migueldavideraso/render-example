@@ -1,6 +1,6 @@
 import { Result } from "../../_result/main";
 import { type TResult } from "../../_result/type";
-import { type IAccount, type IAccountBackupData, type IBackupData } from "../domine/models"
+import { ICollectionBackup, type IAccount, type IAccountBackupData, type IBackupData } from "../domine/models"
 import { type IAuthController, type IBackupController, type ICreateAccountsBackup, type IDBController, type IStorageController } from "../domine/services"
 
 
@@ -57,7 +57,9 @@ export class CreateAccountsBackup implements ICreateAccountsBackup {
 
     try {
 
-      const CollectionBackup = await this.backupController.createAccountBackup(accountId)
+      const CollectionBackup: ICollectionBackup = {
+        collections: {}
+      } //await this.backupController.createAccountBackup(accountId)
 
       console.log('CollectionBackup')
 
